@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THY PLAN NAIL STUDIO | Nail Salon in Mandalay</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+:root{--rose:#C9184A;--pink:#FF8FAB;--blush:#FFF0F3;--gold:#C9A24B;--plum:#4A1028;--cream:#FFFBF7}
+body{background:var(--cream);color:#2B1220;line-height:1.6}
+a{text-decoration:none}
+.topbar{background:var(--plum);color:#fff;padding:9px 14px;text-align:center;font-size:14px}
+.topbar b{color:#FFC2D6}
+header{position:sticky;top:0;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;box-shadow:0 2px 12px rgba(201,24,74,.15);z-index:20}
+.logo-box{display:flex;align-items:center;gap:9px;cursor:pointer}
+.logo-box img{height:54px;width:auto;max-width:190px;object-fit:contain}
+.logo-demo{width:54px;height:54px;background:var(--rose);color:#fff;display:grid;place-items:center;font-size:24px;border-radius:50%;border:2px solid var(--gold)}
+.logo-text{line-height:1}.logo-text b{color:var(--plum);font-size:17px}.logo-text span{color:var(--rose);font-size:10px;letter-spacing:1.5px;font-weight:900}
+nav{display:flex;gap:6px}
+nav button{border:none;background:#FFF0F3;color:var(--plum);padding:10px 12px;border-radius:999px;font-weight:800;font-size:14px;cursor:pointer}
+nav button.active{background:var(--rose);color:#fff}
+.btn{background:var(--rose);color:#fff;padding:14px 20px;border-radius:999px;font-weight:900;display:inline-block;border:none;cursor:pointer;font-size:16px;text-align:center}
+.btn-gold{background:var(--gold);color:#fff}.btn-plum{background:var(--plum);color:#fff}.btn-green{background:#25D366;color:#fff}.btn-grey{background:#F3E8EE;color:#2B1220}
+.page{display:none}.page.active{display:block}
+.hero{background:linear-gradient(180deg,#4A1028 0%,#C9184A 70%,#FF8FAB 100%);color:#fff;padding:30px 16px 36px;text-align:center}
+.hero-logo{background:#fff;padding:14px 18px;border-radius:20px;display:inline-block;min-width:200px}
+.hero-logo img{max-height:76px;max-width:260px;display:block;margin:0 auto}
+.hero .badge{background:#fff;color:var(--rose);display:inline-block;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:900;margin-top:14px}
+.hero h1{font-size:36px;line-height:1.05;margin:14px 0 10px}.hero h1 span{color:#FFD1DE}
+.hero p{max-width:560px;margin:0 auto 18px;opacity:.95;font-size:17px}
+.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.trust{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px;font-size:13px;font-weight:700}
+.trust div{background:rgba(255,255,255,.22);padding:8px 12px;border-radius:999px}
+.section{padding:28px 16px;max-width:760px;margin:0 auto}
+.section h3{font-size:26px;color:var(--plum);margin-bottom:6px}.section p.sub{color:#7A5A6E;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#fff;padding:18px;border-radius:18px;border:1px solid #F8D7E3;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.card h4{color:var(--plum);margin-bottom:4px}.card p{font-size:14px;color:#5A3A4E}
+.price-tag{font-weight:900;color:var(--rose);font-size:19px;margin-top:8px}
+.price-box{background:#FFF0F3;border:1px solid #F8BFD0;padding:14px;border-radius:12px;margin-top:12px;font-size:15px}
+.review{background:#fff;border:1px solid #F3D1DD;border-radius:16px;padding:18px;margin-bottom:12px}
+.stars{color:#E7548A;font-size:19px}
+input,select,textarea{width:100%;padding:14px;border-radius:12px;border:1px solid #E8C5D1;margin:6px 0 10px;font-size:16px}
+label{font-size:13px;font-weight:800}
+.areas{display:flex;flex-wrap:wrap;gap:8px}.areas span{background:#FCE4EC;padding:7px 11px;border-radius:999px;font-size:13px;font-weight:700;color:var(--plum)}
+.gallery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.gallery div{border-radius:14px;height:110px;display:grid;place-items:center;font-size:32px;background:#FFF0F3;border:1px solid #F8D7E3;overflow:hidden}
+.gallery img{width:100%;height:100%;object-fit:cover}
+footer{background:#2B1220;color:#fff;padding:26px 16px;text-align:center;font-size:14px}footer a{color:#FFC2D6}
+.float{position:fixed;bottom:16px;right:16px;background:#25D366;color:#fff;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-size:28px;box-shadow:0 6px 18px rgba(0,0,0,.25);z-index:30}
+.admin-box{background:#fff;border:2px solid var(--rose);border-radius:18px;padding:20px;margin:16px auto;max-width:760px}
+.admin-card{background:#FFF5F8;border:1px solid #F3D1DD;border-radius:12px;padding:12px;margin-bottom:10px}
+.small{font-size:12px;color:#7A5A6E}
+.team-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.team-card{background:#fff;border:1px solid #F3D1DD;border-radius:14px;padding:14px;text-align:center}
+.team-card img{width:92px;height:92px;object-fit:cover;border-radius:50%;border:3px solid var(--pink);background:#FCE4EC}
+.team-avatar{width:92px;height:92px;border-radius:50%;background:var(--plum);color:#FFC2D6;display:grid;place-items:center;font-size:32px;font-weight:900;margin:0 auto;border:3px solid var(--gold)}
+.upload-preview{width:100%;max-height:150px;object-fit:contain;background:#fff;border:1px dashed #ccc;border-radius:10px;margin:6px 0}
+.pill{display:inline-block;background:#FFF0F3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;margin:3px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}.hero h1{font-size:30px}nav button{padding:9px 9px;font-size:13px}}
+</style>
+</head>
+<body>
+
+<div id="site">
+<div class="topbar">💅 THY PLAN NAIL STUDIO • ⭐ 4.9 (36 Reviews) • <b>Women-Owned in Mandalay</b></div>
+<header>
+  <div class="logo-box" onclick="goPage('home')"><div id="headerLogo"></div></div>
+  <nav>
+    <button id="btn-home" class="active" onclick="goPage('home')">Home</button>
+    <button id="btn-services" onclick="goPage('services')">Services</button>
+    <button id="btn-book" onclick="goPage('book')">Book</button>
+  </nav>
+</header>
+
+<!-- PAGE 1 HOME -->
+<div id="page-home" class="page active">
+<section class="hero">
+  <div class="hero-logo" id="heroLogo"></div><br>
+  <span class="badge">💅 NAIL SALON • MANDALAY • MITCHELLS PLAIN</span>
+  <h1>Your Nails.<br><span>Your Plan. Perfect Every Time.</span></h1>
+  <p>Calm environment, friendly owner, sweet staff. Cat Eye gel, flawless sets, nail repair — what you want is what you get. 4.9 stars from 36 happy clients.</p>
+  <div class="hero-btns">
+    <button class="btn" onclick="goPage('book')">📅 Book Appointment</button>
+    <button class="btn btn-plum" onclick="goPage('services')">💅 View Prices</button>
+  </div>
+  <div class="trust"><div>⭐ 4.9 ★ (36)</div><div>💖 Women-Owned</div><div>🏳️‍🌈 LGBTQ+ Friendly</div><div>♿ Wheelchair Accessible</div></div>
+</section>
+<section class="section">
+  <h3>Why Ladies Love Thy Plan</h3>
+  <p class="sub">From Google reviews — real words from real clients.</p>
+  <div class="grid">
+    <div class="card"><h4>✨ Amazing Work</h4><p>Mentioned in 3 reviews. Flawless finish, every time.</p></div>
+    <div class="card"><h4>😌 Calm Environment</h4><p>Relax, get a beverage, enjoy your appointment.</p></div>
+    <div class="card"><h4>💖 Friendly Owner</h4><p>Great time management, welcoming, professional.</p></div>
+    <div class="card"><h4>🛠️ Nail Repair</h4><p>We fix broken nails, we don't just cover them.</p></div>
+  </div>
+  <div class="price-box"><b>This Week:</b> <span id="specialHome"></span></div>
+</section>
+<section class="section" style="background:#FFF0F3;border-radius:18px">
+  <h3>Most Loved Sets</h3>
+  <div class="gallery" id="galleryHome"></div>
+  <button class="btn" style="margin-top:14px;width:100%" onclick="goPage('services')">See All Services & Gallery →</button>
+</section>
+<section class="section">
+  <h3>What Clients Say</h3>
+  <div class="review"><div class="stars">★★★★★</div><p><b>"Most satisfying nail appointment I've had in a long time. I booked for Cat Eye gel and everything was done exactly as requested. The tech had great time management... came out flawless. Highly recommend."</b></p><p style="font-size:13px;color:#777">— Buhle Pemba • 4 months ago</p></div>
+  <div class="review"><div class="stars">★★★★★</div><p><b>"What I wanted vs what I got is on point. Love their work so much, I'm coming back."</b></p><p style="font-size:13px;color:#777">— Lelethu Majola • 8 months ago</p></div>
+  <button class="btn btn-grey" style="width:100%" onclick="goPage('book')">Read All Reviews & Book →</button>
+</section>
+</div>
+
+<!-- PAGE 2 SERVICES -->
+<div id="page-services" class="page">
+<section class="section">
+  <h3>Services & Prices</h3>
+  <p class="sub">Appointment required. Appointments recommended. Card payments accepted.</p>
+  <div class="grid" id="servicesGrid"></div>
+  <div class="price-box"><b>Special:</b> <span id="specialText"></span></div>
+</section>
+<section class="section" style="background:#FFF0F3;border-radius:18px">
+  <h3>Gallery — Our Work</h3>
+  <p class="sub">Owner can upload real photos from dashboard. Demo photos below.</p>
+  <div class="gallery" id="galleryServices"></div>
+  <p class="small" style="margin-top:10px">Cat Eye • French • Ombre • Chrome • Acrylic • Gel • Nail Art • Pedicure</p>
+</section>
+<section class="section">
+  <h3>Meet The Team</h3>
+  <div class="team-grid" id="teamGrid"></div>
+</section>
+</div>
+
+<!-- PAGE 3 BOOK & CONTACT -->
+<div id="page-book" class="page">
+<section class="section">
+  <form onsubmit="sendWhatsApp(event)" style="background:var(--plum);color:#fff;padding:22px;border-radius:20px">
+    <h3 style="color:#fff">Book Your Appointment</h3>
+    <p style="font-size:14px;opacity:.9;margin-bottom:12px">Appointment required. Fill in 30 seconds. Goes straight to Thy Plan on WhatsApp.</p>
+    <label>Your Name</label><input id="name" required>
+    <label>Your WhatsApp Number</label><input id="clientPhone" inputmode="numeric">
+    <label>What Do You Want?</label><select id="serviceSelect"></select>
+    <label>Preferred Date</label><input id="date" type="date">
+    <label>Preferred Time</label><select id="time"><option>09:00</option><option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option></select>
+    <label>Describe Your Dream Set / Send Inspo</label><textarea id="msg" rows="3"></textarea>
+    <button class="btn" style="width:100%;font-size:17px" type="submit">Send Booking On WhatsApp →</button>
+    <p style="text-align:center;margin-top:10px;font-size:14px">Or Call: <b>072 607 5916</b></p>
+  </form>
+</section>
+<section class="section">
+  <h3>All Reviews — 4.9 Stars</h3>
+  <div class="review"><div class="stars">★★★★★</div><p><b>Calm environment • Friendly owner • Sweet staff • Amazing work • Client comfort</b></p><p style="font-size:13px;color:#777">Top words from 36 Google reviews</p></div>
+  <div class="review"><div class="stars">★★★★★</div><p><b>"Most satisfying nail appointment... came out flawless. Highly recommend."</b></p><p style="font-size:13px;color:#777">— Buhle Pemba</p></div>
+  <div class="review"><div class="stars">★★★★★</div><p><b>"What I wanted vs what I got is on point."</b></p><p style="font-size:13px;color:#777">— Lelethu Majola</p></div>
+</section>
+<section class="section">
+  <h3>Find Us</h3>
+  <p><b>Address:</b> 1 Aubert Cl, Mandalay, Cape Town, 7785<br><b>Plus Code:</b> XJGG+C4 Mitchells Plain, Cape Town<br><b>Phone:</b> 072 607 5916<br><b>Hours:</b> Open — Closes 8pm<br><b>Planning:</b> Appointment required<br><b>Payments:</b> Credit cards, Debit cards<br><b>Access:</b> Wheelchair-accessible car park, seating, toilet<br><b>Safe Space:</b> Women-owned, LGBTQ+ friendly, Transgender safe space</p>
+  <div class="areas"><span>Mandalay</span><span>Mitchells Plain</span><span>Lentegeur</span><span>Beacon Valley</span><span>Rocklands</span></div>
+  <br>
+  <a class="btn btn-plum" href="https://www.google.com/maps/search/?api=1&query=1+Aubert+Cl+Mandalay+Cape+Town+7785" target="_blank">📍 Get Directions</a>
+</section>
+</div>
+
+<footer>
+  <h3 style="color:#fff">THY PLAN NAIL STUDIO</h3>
+  <p>Nail Salon • Women-Owned • LGBTQ+ Friendly • Safe Space</p>
+  <p style="margin-top:10px">📍 1 Aubert Cl, Mandalay, 7785<br>⭐ 4.9 on Google (36 Reviews) • 📞 072 607 5916 • Closes 8pm</p>
+  <p style="margin-top:10px"><a id="footerWhatsApp" href="#">WhatsApp Us</a> • <a id="footerCall" href="#">Call Us</a> • <a href="#admin" onclick="showAdmin()">Owner Login</a></p>
+  <p style="opacity:.6;margin-top:12px;font-size:12px">Website built by Avatar Web Store • © 2026 Thy Plan Nail Studio</p>
+</footer>
+<a class="float" id="floatWhatsApp" href="#" target="_blank">💬</a>
+</div>
+
+<!-- OWNER ADMIN - CLEAN LOGIN, NO TEXT INSIDE BOXES -->
+<div id="admin" style="display:none;background:#FFF0F3;min-height:100vh;padding:16px">
+  <div class="admin-box">
+    <h2 style="color:var(--plum)">🔐 Owner Dashboard</h2>
+    <p class="small">Thy Plan Nail Studio</p>
+    <div id="loginBox" style="margin-top:16px">
+      <label>Your Phone Number</label>
+      <input id="loginPhone" inputmode="numeric">
+      <label>Password</label>
+      <input id="loginPass" type="password" inputmode="numeric">
+      <button class="btn" style="width:100%" onclick="doLogin()">Login</button>
+      <p id="loginError" style="color:red;font-weight:700"></p>
+    </div>
+    <div id="dashBox" style="display:none;margin-top:16px">
+      <p><b>Welcome, Owner ✅</b> <span id="showPhone"></span></p>
+      <button class="btn btn-grey" onclick="doLogout()">Log Out</button>
+      <button class="btn btn-plum" onclick="document.getElementById('passBox').style.display='block'">Change Password</button>
+      <div id="passBox" style="display:none;margin-top:12px;background:#FFF0F3;padding:14px;border-radius:12px">
+        <h4>Change Password - Numbers Only</h4>
+        <label>Old Password</label><input id="oldPass" inputmode="numeric">
+        <label>New Password</label><input id="newPass" inputmode="numeric">
+        <label>Repeat New Password</label><input id="newPass2" inputmode="numeric">
+        <button class="btn" onclick="changePassword()">Save New Password</button>
+        <p id="passMsg" style="font-weight:700"></p>
+      </div>
+      <h3 style="margin-top:20px">1. Company Logo</h3>
+      <div id="currentLogoPreview"></div>
+      <label>Choose Logo Photo</label>
+      <input type="file" accept="image/*" onchange="uploadLogo(event)">
+      <button class="btn btn-grey" onclick="removeLogo()">Remove Logo - Use Demo Logo</button>
+      <h3 style="margin-top:20px">2. Your Phone / WhatsApp Number</h3>
+      <input id="editPhone">
+      <h3>3. Special Offer</h3>
+      <input id="editSpecial">
+      <h3>4. Services & Prices</h3>
+      <div id="editServices"></div>
+      <button class="btn btn-green" onclick="addService()">+ Add Service</button>
+      <h3 style="margin-top:20px">5. Gallery Photos</h3>
+      <p class="small">Upload your real nail work. Shows on Home + Services.</p>
+      <div id="editGallery"></div>
+      <label>Add Gallery Photo</label><input type="file" accept="image/*" onchange="addGalleryPhoto(event)">
+      <h3 style="margin-top:20px">6. Your Team</h3>
+      <div id="editTeam"></div>
+      <button class="btn btn-green" onclick="addBrother()">+ Add Team Member</button>
+      <br><br>
+      <button class="btn" style="width:100%;font-size:17px" onclick="saveAll()">💾 SAVE ALL CHANGES</button>
+      <p id="saveMsg" style="color:green;font-weight:800;margin-top:8px"></p>
+      <button class="btn btn-grey" style="width:100%;margin-top:10px" onclick="showSite()">← Back To Website</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const OWNER_PHONE = "27726075916";
+const DEFAULT_SERVICES = [
+  {name:"💅 Cat Eye Gel", desc:"The famous Cat Eye set from reviews. Flawless, shiny, magnetic effect.", price:"From R280"},
+  {name:"✨ Acrylic Full Set", desc:"Long, strong, beautiful shape. Your dream set, exactly as you show us.", price:"From R350"},
+  {name:"💖 Gel Polish / Gel Overlay", desc:"Natural nails, gel overlay, neat and long-lasting.", price:"From R200"},
+  {name:"🇫🇷 French & Ombre", desc:"Classic French, baby boomer, ombre. Clean and elegant.", price:"From R300"},
+  {name:"🛠️ Nail Repair", desc:"Broken nail fixed. We repair, don't just cover.", price:"From R80"},
+  {name:"🦶 Pedicure + Manicure", desc:"Full pamper. Soak, scrub, polish. Calm environment + beverage.", price:"From R250"}
+];
+const DEFAULT_TEAM = [
+  {name:"Owner", role:"Owner & Nail Tech", phone:"", photo:""},
+  {name:"Team Member 2", role:"Nail Tech", phone:"", photo:""},
+  {name:"Team Member 3", role:"Nail Tech", phone:"", photo:""}
+];
+const DEFAULT_GALLERY = ["💅","✨","🌸","🦋","💖","✨"];
+function getData(){
+  let d = JSON.parse(localStorage.getItem('thyplan_v1')||'null');
+  if(!d){ d={phone:OWNER_PHONE, services:DEFAULT_SERVICES, team:DEFAULT_TEAM, gallery:DEFAULT_GALLERY, special:"New Clients: Free Beverage With Every Set This Week • Book Today, Closes 8pm", password:OWNER_PHONE.replace('27','0'), logo:""}; localStorage.setItem('thyplan_v1', JSON.stringify(d)); }
+  return d;
+}
+function saveData(d){ localStorage.setItem('thyplan_v1', JSON.stringify(d)); }
+function logoHTML(big){
+  let d=getData();
+  if(d.logo){ return `<img src="${d.logo}" alt="Logo" style="${big?'max-height:76px;max-width:260px':'height:54px;max-width:190px'}">`; }
+  return big ? `<div style="font-size:24px;font-weight:900;color:var(--plum)">THY PLAN<br><span style="font-size:16px;color:var(--rose)">NAIL STUDIO</span><br><span style="font-size:10px;color:#888">MANDALAY • CAPE TOWN</span></div>` : `<div style="display:flex;align-items:center;gap:9px"><div class="logo-demo">💅</div><div class="logo-text"><b>THY PLAN</b><br><span>NAIL STUDIO</span></div></div>`;
+}
+function goPage(p){
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-'+p).classList.add('active');
+  window.scrollTo(0,0);
+}
+function galleryHTML(){
+  let d=getData();
+  return d.gallery.map(g=>{
+    if(g.startsWith('data:')) return `<div><img src="${g}"></div>`;
+    return `<div>${g}</div>`;
+  }).join('');
+}
+function renderSite(){
+  let d=getData();
+  let wa="https://wa.me/"+d.phone+"?text="+encodeURIComponent("Hi Thy Plan Nail Studio, I want to book nails in Mandalay");
+  document.getElementById('headerLogo').innerHTML=logoHTML(false);
+  document.getElementById('heroLogo').innerHTML=logoHTML(true);
+  document.getElementById('footerWhatsApp').href=wa;
+  document.getElementById('floatWhatsApp').href=wa;
+  document.getElementById('footerCall').href="tel:+"+d.phone;
+  document.getElementById('specialText').textContent=d.special;
+  document.getElementById('specialHome').textContent=d.special;
+  let grid=document.getElementById('servicesGrid'); let sel=document.getElementById('serviceSelect');
+  grid.innerHTML=""; sel.innerHTML="";
+  d.services.forEach(s=>{ grid.innerHTML+=`<div class="card"><h4>${s.name}</h4><p>${s.desc}</p><div class="price-tag">${s.price}</div><button class="btn" style="margin-top:10px;padding:10px 16px;font-size:14px" onclick="goPage('book')">Book This →</button></div>`; sel.innerHTML+=`<option>${s.name} - ${s.price}</option>`; });
+  document.getElementById('galleryHome').innerHTML=galleryHTML();
+  document.getElementById('galleryServices').innerHTML=galleryHTML();
+  let tg=document.getElementById('teamGrid'); tg.innerHTML="";
+  d.team.forEach(m=>{
+    let img = m.photo ? `<img src="${m.photo}">` : `<div class="team-avatar">${m.name.charAt(0)}</div>`;
+    let btn = m.phone ? `<a href="https://wa.me/${m.phone}" target="_blank" style="display:inline-block;margin-top:8px;background:#25D366;color:#fff;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700">WhatsApp</a>` : `<span style="font-size:12px;color:#999">No WhatsApp yet</span>`;
+    tg.innerHTML+=`<div class="team-card">${img}<h4 style="margin-top:8px;color:var(--plum)">${m.name}</h4><p style="font-size:13px;color:#666">${m.role}</p>${btn}</div>`;
+  });
+}
+function sendWhatsApp(e){ e.preventDefault(); let d=getData(); let text="Hi Thy Plan Nail Studio! I'm "+document.getElementById('name').value+" ("+document.getElementById('clientPhone').value+"). I want to book: "+document.getElementById('serviceSelect').value+" on "+document.getElementById('date').value+" at "+document.getElementById('time').value+". Details: "+document.getElementById('msg').value; window.open("https://wa.me/"+d.phone+"?text="+encodeURIComponent(text),"_blank"); }
+function showAdmin(){ document.getElementById('site').style.display='none'; document.getElementById('admin').style.display='block'; window.scrollTo(0,0); if(localStorage.getItem('thyplan_logged')==='yes'){ showDash(); } }
+function showSite(){ document.getElementById('admin').style.display='none'; document.getElementById('site').style.display='block'; renderSite(); }
+function doLogin(){ let d=getData(); let phone=document.getElementById('loginPhone').value.replace(/\s/g,''); let pass=document.getElementById('loginPass').value.replace(/\s/g,''); if((phone===d.phone.replace('27','0')||phone===d.phone)&&pass===d.password){ localStorage.setItem('thyplan_logged','yes'); showDash(); } else { document.getElementById('loginError').textContent="Wrong number or password."; } }
+function showDash(){ let d=getData(); document.getElementById('loginBox').style.display='none'; document.getElementById('dashBox').style.display='block'; document.getElementById('showPhone').textContent=d.phone; document.getElementById('editPhone').value=d.phone; document.getElementById('editSpecial').value=d.special; document.getElementById('currentLogoPreview').innerHTML = d.logo ? `<img src="${d.logo}" class="upload-preview">` : `<p class="small">Currently using DEMO logo. Upload yours below.</p>`; renderEditServices(); renderEditTeam(); renderEditGallery(); }
+function renderEditServices(){ let d=getData(); let box=document.getElementById('editServices'); box.innerHTML=""; d.services.forEach((s,i)=>{ box.innerHTML+=`<div class="admin-card"><label>Service ${i+1} Name</label><input class="srv" value="${s.name}"><label>Description</label><input class="srv" value="${s.desc}"><label>Price</label><input class="srv" value="${s.price}"><button class="btn btn-grey" onclick="deleteService(${i})">X Delete</button></div>`; }); }
+function renderEditTeam(){ let d=getData(); let box=document.getElementById('editTeam'); box.innerHTML=""; d.team.forEach((m,i)=>{ box.innerHTML+=`<div class="admin-card"><label>Team ${i+1} - Name</label><input class="team" value="${m.name}"><label>Job / Role</label><input class="team" value="${m.role}"><label>Her WhatsApp (with 27)</label><input class="team" value="${m.phone}"><label>Her Photo</label>${m.photo?`<img src="${m.photo}" class="upload-preview">`:``}<input type="file" accept="image/*" onchange="uploadBrotherPhoto(event,${i})"><button class="btn btn-grey" onclick="deleteBrother(${i})">X Remove</button></div>`; }); }
+function renderEditGallery(){ let d=getData(); let box=document.getElementById('editGallery'); box.innerHTML=""; d.gallery.forEach((g,i)=>{ let preview = g.startsWith('data:') ? `<img src="${g}" class="upload-preview">` : `<div style="font-size:32px;text-align:center">${g}</div>`; box.innerHTML+=`<div class="admin-card">${preview}<button class="btn btn-grey" onclick="deleteGallery(${i})">X Delete Photo</button></div>`; }); }
+function addService(){ let d=getData(); d.services.push({name:"💅 New Service",desc:"Describe it",price:"From R0"}); saveData(d); renderEditServices(); }
+function deleteService(i){ if(!confirm("Delete this service?")) return; let d=getData(); d.services.splice(i,1); saveData(d); renderEditServices(); }
+function addBrother(){ let d=getData(); d.team.push({name:"New Member",role:"Nail Tech",phone:"",photo:""}); saveData(d); renderEditTeam(); }
+function deleteBrother(i){ if(!confirm("Remove this member?")) return; let d=getData(); d.team.splice(i,1); saveData(d); renderEditTeam(); }
+function addGalleryPhoto(e){ let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(){ let d=getData(); d.gallery.push(r.result); saveData(d); renderEditGallery(); renderSite(); }; r.readAsDataURL(f); }
+function deleteGallery(i){ let d=getData(); d.gallery.splice(i,1); saveData(d); renderEditGallery(); renderSite(); }
+function uploadLogo(e){ let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(){ let d=getData(); d.logo=r.result; saveData(d); document.getElementById('currentLogoPreview').innerHTML=`<img src="${d.logo}" class="upload-preview">`; renderSite(); alert("Logo uploaded!"); }; r.readAsDataURL(f); }
+function removeLogo(){ let d=getData(); d.logo=""; saveData(d); document.getElementById('currentLogoPreview').innerHTML=`<p class="small">Demo logo restored.</p>`; renderSite(); }
+function uploadBrotherPhoto(e,i){ let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(){ let d=getData(); d.team[i].photo=r.result; saveData(d); renderEditTeam(); renderSite(); }; r.readAsDataURL(f); }
+function saveAll(){ let d=getData(); d.phone=document.getElementById('editPhone').value.replace(/\s/g,'').replace(/^\+/,''); d.special=document.getElementById('editSpecial').value; let srvInputs=document.querySelectorAll('.srv'); let ns=[]; for(let k=0;k<srvInputs.length;k+=3){ ns.push({name:srvInputs[k].value,desc:srvInputs[k+1].value,price:srvInputs[k+2].value}); } d.services=ns; let teamInputs=document.querySelectorAll('.team'); let nt=[]; for(let k=0;k<teamInputs.length;k+=3){ let idx=k/3; nt.push({name:teamInputs[k].value,role:teamInputs[k+1].value,phone:teamInputs[k+2].value,photo:d.team[idx]?d.team[idx].photo:""}); } d.team=nt; saveData(d); document.getElementById('saveMsg').textContent="Saved! Website updated."; renderSite(); }
+function changePassword(){ let d=getData(); let o=document.getElementById('oldPass').value.trim(); let n=document.getElementById('newPass').value.trim(); let n2=document.getElementById('newPass2').value.trim(); if(o!==d.password){ document.getElementById('passMsg').style.color='red'; document.getElementById('passMsg').textContent="Old password wrong."; return; } if(!/^[0-9]+$/.test(n)){ document.getElementById('passMsg').style.color='red'; document.getElementById('passMsg').textContent="Numbers only."; return; } if(n!==n2){ document.getElementById('passMsg').style.color='red'; document.getElementById('passMsg').textContent="Passwords do not match."; return; } d.password=n; saveData(d); document.getElementById('passMsg').style.color='green'; document.getElementById('passMsg').textContent="Password changed!"; }
+function doLogout(){ localStorage.removeItem('thyplan_logged'); location.reload(); }
+if(location.hash==="#admin"){ showAdmin(); }
+renderSite();
+</script>
+</body>
+</html>
