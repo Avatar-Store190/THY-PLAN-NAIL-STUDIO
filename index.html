@@ -34,13 +34,14 @@ nav button.active{background:var(--rose);color:#fff}
 .section{padding:28px 16px;max-width:760px;margin:0 auto}
 .section h3{font-size:26px;color:var(--plum);margin-bottom:6px}.section p.sub{color:#7A5A6E;margin-bottom:16px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:#fff;padding:18px;border-radius:18px;border:1px solid #F8D7E3;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.card{background:#fff;padding:18px;border-radius:18px;border:1px solid #F8D7E3}
 .card h4{color:var(--plum);margin-bottom:4px}.card p{font-size:14px;color:#5A3A4E}
 .price-tag{font-weight:900;color:var(--rose);font-size:19px;margin-top:8px}
 .price-box{background:#FFF0F3;border:1px solid #F8BFD0;padding:14px;border-radius:12px;margin-top:12px;font-size:15px}
 .review{background:#fff;border:1px solid #F3D1DD;border-radius:16px;padding:18px;margin-bottom:12px}
 .stars{color:#E7548A;font-size:19px}
 input,select,textarea{width:100%;padding:14px;border-radius:12px;border:1px solid #E8C5D1;margin:6px 0 10px;font-size:16px}
+input[type=checkbox]{width:22px;height:22px;accent-color:#C9184A}
 label{font-size:13px;font-weight:800}
 .areas{display:flex;flex-wrap:wrap;gap:8px}.areas span{background:#FCE4EC;padding:7px 11px;border-radius:999px;font-size:13px;font-weight:700;color:var(--plum)}
 .gallery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
@@ -56,7 +57,8 @@ footer{background:#2B1220;color:#fff;padding:26px 16px;text-align:center;font-si
 .team-card img{width:92px;height:92px;object-fit:cover;border-radius:50%;border:3px solid var(--pink);background:#FCE4EC}
 .team-avatar{width:92px;height:92px;border-radius:50%;background:var(--plum);color:#FFC2D6;display:grid;place-items:center;font-size:32px;font-weight:900;margin:0 auto;border:3px solid var(--gold)}
 .upload-preview{width:100%;max-height:150px;object-fit:contain;background:#fff;border:1px dashed #ccc;border-radius:10px;margin:6px 0}
-.pill{display:inline-block;background:#FFF0F3;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;margin:3px}
+.toggle-box{background:#FFF0F3;border:2px solid #F8BFD0;border-radius:12px;padding:14px;display:flex;align-items:center;gap:10px}
+.toggle-box b{font-size:16px;color:var(--plum)}
 @media(max-width:560px){.grid{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}.hero h1{font-size:30px}nav button{padding:9px 9px;font-size:13px}}
 </style>
 </head>
@@ -91,11 +93,12 @@ footer{background:#2B1220;color:#fff;padding:26px 16px;text-align:center;font-si
   <p class="sub">From Google reviews — real words from real clients.</p>
   <div class="grid">
     <div class="card"><h4>✨ Amazing Work</h4><p>Mentioned in 3 reviews. Flawless finish, every time.</p></div>
-    <div class="card"><h4>😌 Calm Environment</h4><p>Relax, get a beverage, enjoy your appointment.</p></div>
+    <div class="card"><h4>😌 Calm Environment</h4><p>Relax, enjoy your appointment.</p></div>
     <div class="card"><h4>💖 Friendly Owner</h4><p>Great time management, welcoming, professional.</p></div>
     <div class="card"><h4>🛠️ Nail Repair</h4><p>We fix broken nails, we don't just cover them.</p></div>
   </div>
-  <div class="price-box"><b>This Week:</b> <span id="specialHome"></span></div>
+  <!-- SPECIAL - HIDDEN IF OWNER TURNS IT OFF -->
+  <div class="price-box" id="specialHomeBox" style="display:none"><b>This Week Special:</b> <span id="specialHome"></span></div>
 </section>
 <section class="section" style="background:#FFF0F3;border-radius:18px">
   <h3>Most Loved Sets</h3>
@@ -116,11 +119,12 @@ footer{background:#2B1220;color:#fff;padding:26px 16px;text-align:center;font-si
   <h3>Services & Prices</h3>
   <p class="sub">Appointment required. Appointments recommended. Card payments accepted.</p>
   <div class="grid" id="servicesGrid"></div>
-  <div class="price-box"><b>Special:</b> <span id="specialText"></span></div>
+  <!-- SPECIAL - HIDDEN IF OWNER TURNS IT OFF -->
+  <div class="price-box" id="specialBox" style="display:none"><b>This Week Special:</b> <span id="specialText"></span></div>
 </section>
 <section class="section" style="background:#FFF0F3;border-radius:18px">
   <h3>Gallery — Our Work</h3>
-  <p class="sub">Owner can upload real photos from dashboard. Demo photos below.</p>
+  <p class="sub">Owner can upload real photos from dashboard.</p>
   <div class="gallery" id="galleryServices"></div>
   <p class="small" style="margin-top:10px">Cat Eye • French • Ombre • Chrome • Acrylic • Gel • Nail Art • Pedicure</p>
 </section>
@@ -141,7 +145,7 @@ footer{background:#2B1220;color:#fff;padding:26px 16px;text-align:center;font-si
     <label>What Do You Want?</label><select id="serviceSelect"></select>
     <label>Preferred Date</label><input id="date" type="date">
     <label>Preferred Time</label><select id="time"><option>09:00</option><option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option></select>
-    <label>Describe Your Dream Set / Send Inspo</label><textarea id="msg" rows="3"></textarea>
+    <label>Describe Your Dream Set</label><textarea id="msg" rows="3"></textarea>
     <button class="btn" style="width:100%;font-size:17px" type="submit">Send Booking On WhatsApp →</button>
     <p style="text-align:center;margin-top:10px;font-size:14px">Or Call: <b>072 607 5916</b></p>
   </form>
@@ -203,8 +207,19 @@ footer{background:#2B1220;color:#fff;padding:26px 16px;text-align:center;font-si
       <button class="btn btn-grey" onclick="removeLogo()">Remove Logo - Use Demo Logo</button>
       <h3 style="margin-top:20px">2. Your Phone / WhatsApp Number</h3>
       <input id="editPhone">
-      <h3>3. Special Offer</h3>
-      <input id="editSpecial">
+
+      <!-- NEW: SPECIAL WITH ON/OFF - EASY FOR OWNER -->
+      <h3>3. This Week Special - Owner Controls This</h3>
+      <div class="toggle-box">
+        <input type="checkbox" id="editShowSpecial" onchange="toggleSpecialInput()">
+        <b>Show Special On Website? Tick = Show, Untick = Hide</b>
+      </div>
+      <div id="specialInputBox" style="display:none;margin-top:10px">
+        <label>Write Your Special Here (e.g. 20% Off Cat Eye This Week)</label>
+        <input id="editSpecial">
+      </div>
+      <p class="small">If you have NO special, just untick the box and save. Nothing will show to customers. If you have a special, tick the box, write it, save.</p>
+
       <h3>4. Services & Prices</h3>
       <div id="editServices"></div>
       <button class="btn btn-green" onclick="addService()">+ Add Service</button>
@@ -231,7 +246,7 @@ const DEFAULT_SERVICES = [
   {name:"💖 Gel Polish / Gel Overlay", desc:"Natural nails, gel overlay, neat and long-lasting.", price:"From R200"},
   {name:"🇫🇷 French & Ombre", desc:"Classic French, baby boomer, ombre. Clean and elegant.", price:"From R300"},
   {name:"🛠️ Nail Repair", desc:"Broken nail fixed. We repair, don't just cover.", price:"From R80"},
-  {name:"🦶 Pedicure + Manicure", desc:"Full pamper. Soak, scrub, polish. Calm environment + beverage.", price:"From R250"}
+  {name:"🦶 Pedicure + Manicure", desc:"Full pamper. Soak, scrub, polish.", price:"From R250"}
 ];
 const DEFAULT_TEAM = [
   {name:"Owner", role:"Owner & Nail Tech", phone:"", photo:""},
@@ -240,11 +255,14 @@ const DEFAULT_TEAM = [
 ];
 const DEFAULT_GALLERY = ["💅","✨","🌸","🦋","💖","✨"];
 function getData(){
-  let d = JSON.parse(localStorage.getItem('thyplan_v1')||'null');
-  if(!d){ d={phone:OWNER_PHONE, services:DEFAULT_SERVICES, team:DEFAULT_TEAM, gallery:DEFAULT_GALLERY, special:"New Clients: Free Beverage With Every Set This Week • Book Today, Closes 8pm", password:OWNER_PHONE.replace('27','0'), logo:""}; localStorage.setItem('thyplan_v1', JSON.stringify(d)); }
+  let d = JSON.parse(localStorage.getItem('thyplan_v2')||'null');
+  if(!d){ d={phone:OWNER_PHONE, services:DEFAULT_SERVICES, team:DEFAULT_TEAM, gallery:DEFAULT_GALLERY, special:"", showSpecial:false, password:OWNER_PHONE.replace('27','0'), logo:""}; localStorage.setItem('thyplan_v2', JSON.stringify(d)); }
+  // Fix for old version that had fake special
+  if(d.special && d.special.toLowerCase().includes("beverage")){ d.special=""; d.showSpecial=false; }
   return d;
 }
-function saveData(d){ localStorage.setItem('thyplan_v1', JSON.stringify(d)); }
+function saveData(d){ localStorage.setItem('thyplan_v2', JSON.stringify(d)); }
+function toggleSpecialInput(){ document.getElementById('specialInputBox').style.display = document.getElementById('editShowSpecial').checked ? 'block' : 'none'; }
 function logoHTML(big){
   let d=getData();
   if(d.logo){ return `<img src="${d.logo}" alt="Logo" style="${big?'max-height:76px;max-width:260px':'height:54px;max-width:190px'}">`; }
@@ -272,6 +290,10 @@ function renderSite(){
   document.getElementById('footerWhatsApp').href=wa;
   document.getElementById('floatWhatsApp').href=wa;
   document.getElementById('footerCall').href="tel:+"+d.phone;
+  // SPECIAL - SHOW OR HIDE
+  let show = d.showSpecial && d.special && d.special.trim() !== "";
+  document.getElementById('specialHomeBox').style.display = show ? 'block' : 'none';
+  document.getElementById('specialBox').style.display = show ? 'block' : 'none';
   document.getElementById('specialText').textContent=d.special;
   document.getElementById('specialHome').textContent=d.special;
   let grid=document.getElementById('servicesGrid'); let sel=document.getElementById('serviceSelect');
@@ -290,7 +312,7 @@ function sendWhatsApp(e){ e.preventDefault(); let d=getData(); let text="Hi Thy 
 function showAdmin(){ document.getElementById('site').style.display='none'; document.getElementById('admin').style.display='block'; window.scrollTo(0,0); if(localStorage.getItem('thyplan_logged')==='yes'){ showDash(); } }
 function showSite(){ document.getElementById('admin').style.display='none'; document.getElementById('site').style.display='block'; renderSite(); }
 function doLogin(){ let d=getData(); let phone=document.getElementById('loginPhone').value.replace(/\s/g,''); let pass=document.getElementById('loginPass').value.replace(/\s/g,''); if((phone===d.phone.replace('27','0')||phone===d.phone)&&pass===d.password){ localStorage.setItem('thyplan_logged','yes'); showDash(); } else { document.getElementById('loginError').textContent="Wrong number or password."; } }
-function showDash(){ let d=getData(); document.getElementById('loginBox').style.display='none'; document.getElementById('dashBox').style.display='block'; document.getElementById('showPhone').textContent=d.phone; document.getElementById('editPhone').value=d.phone; document.getElementById('editSpecial').value=d.special; document.getElementById('currentLogoPreview').innerHTML = d.logo ? `<img src="${d.logo}" class="upload-preview">` : `<p class="small">Currently using DEMO logo. Upload yours below.</p>`; renderEditServices(); renderEditTeam(); renderEditGallery(); }
+function showDash(){ let d=getData(); document.getElementById('loginBox').style.display='none'; document.getElementById('dashBox').style.display='block'; document.getElementById('showPhone').textContent=d.phone; document.getElementById('editPhone').value=d.phone; document.getElementById('editSpecial').value=d.special || ""; document.getElementById('editShowSpecial').checked = !!d.showSpecial; toggleSpecialInput(); document.getElementById('currentLogoPreview').innerHTML = d.logo ? `<img src="${d.logo}" class="upload-preview">` : `<p class="small">Currently using DEMO logo. Upload yours below.</p>`; renderEditServices(); renderEditTeam(); renderEditGallery(); }
 function renderEditServices(){ let d=getData(); let box=document.getElementById('editServices'); box.innerHTML=""; d.services.forEach((s,i)=>{ box.innerHTML+=`<div class="admin-card"><label>Service ${i+1} Name</label><input class="srv" value="${s.name}"><label>Description</label><input class="srv" value="${s.desc}"><label>Price</label><input class="srv" value="${s.price}"><button class="btn btn-grey" onclick="deleteService(${i})">X Delete</button></div>`; }); }
 function renderEditTeam(){ let d=getData(); let box=document.getElementById('editTeam'); box.innerHTML=""; d.team.forEach((m,i)=>{ box.innerHTML+=`<div class="admin-card"><label>Team ${i+1} - Name</label><input class="team" value="${m.name}"><label>Job / Role</label><input class="team" value="${m.role}"><label>Her WhatsApp (with 27)</label><input class="team" value="${m.phone}"><label>Her Photo</label>${m.photo?`<img src="${m.photo}" class="upload-preview">`:``}<input type="file" accept="image/*" onchange="uploadBrotherPhoto(event,${i})"><button class="btn btn-grey" onclick="deleteBrother(${i})">X Remove</button></div>`; }); }
 function renderEditGallery(){ let d=getData(); let box=document.getElementById('editGallery'); box.innerHTML=""; d.gallery.forEach((g,i)=>{ let preview = g.startsWith('data:') ? `<img src="${g}" class="upload-preview">` : `<div style="font-size:32px;text-align:center">${g}</div>`; box.innerHTML+=`<div class="admin-card">${preview}<button class="btn btn-grey" onclick="deleteGallery(${i})">X Delete Photo</button></div>`; }); }
@@ -303,7 +325,7 @@ function deleteGallery(i){ let d=getData(); d.gallery.splice(i,1); saveData(d); 
 function uploadLogo(e){ let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(){ let d=getData(); d.logo=r.result; saveData(d); document.getElementById('currentLogoPreview').innerHTML=`<img src="${d.logo}" class="upload-preview">`; renderSite(); alert("Logo uploaded!"); }; r.readAsDataURL(f); }
 function removeLogo(){ let d=getData(); d.logo=""; saveData(d); document.getElementById('currentLogoPreview').innerHTML=`<p class="small">Demo logo restored.</p>`; renderSite(); }
 function uploadBrotherPhoto(e,i){ let f=e.target.files[0]; if(!f) return; let r=new FileReader(); r.onload=function(){ let d=getData(); d.team[i].photo=r.result; saveData(d); renderEditTeam(); renderSite(); }; r.readAsDataURL(f); }
-function saveAll(){ let d=getData(); d.phone=document.getElementById('editPhone').value.replace(/\s/g,'').replace(/^\+/,''); d.special=document.getElementById('editSpecial').value; let srvInputs=document.querySelectorAll('.srv'); let ns=[]; for(let k=0;k<srvInputs.length;k+=3){ ns.push({name:srvInputs[k].value,desc:srvInputs[k+1].value,price:srvInputs[k+2].value}); } d.services=ns; let teamInputs=document.querySelectorAll('.team'); let nt=[]; for(let k=0;k<teamInputs.length;k+=3){ let idx=k/3; nt.push({name:teamInputs[k].value,role:teamInputs[k+1].value,phone:teamInputs[k+2].value,photo:d.team[idx]?d.team[idx].photo:""}); } d.team=nt; saveData(d); document.getElementById('saveMsg').textContent="Saved! Website updated."; renderSite(); }
+function saveAll(){ let d=getData(); d.phone=document.getElementById('editPhone').value.replace(/\s/g,'').replace(/^\+/,''); d.special=document.getElementById('editSpecial').value; d.showSpecial=document.getElementById('editShowSpecial').checked; let srvInputs=document.querySelectorAll('.srv'); let ns=[]; for(let k=0;k<srvInputs.length;k+=3){ ns.push({name:srvInputs[k].value,desc:srvInputs[k+1].value,price:srvInputs[k+2].value}); } d.services=ns; let teamInputs=document.querySelectorAll('.team'); let nt=[]; for(let k=0;k<teamInputs.length;k+=3){ let idx=k/3; nt.push({name:teamInputs[k].value,role:teamInputs[k+1].value,phone:teamInputs[k+2].value,photo:d.team[idx]?d.team[idx].photo:""}); } d.team=nt; saveData(d); document.getElementById('saveMsg').textContent="Saved! Website updated."; renderSite(); }
 function changePassword(){ let d=getData(); let o=document.getElementById('oldPass').value.trim(); let n=document.getElementById('newPass').value.trim(); let n2=document.getElementById('newPass2').value.trim(); if(o!==d.password){ document.getElementById('passMsg').style.color='red'; document.getElementById('passMsg').textContent="Old password wrong."; return; } if(!/^[0-9]+$/.test(n)){ document.getElementById('passMsg').style.color='red'; document.getElementById('passMsg').textContent="Numbers only."; return; } if(n!==n2){ document.getElementById('passMsg').style.color='red'; document.getElementById('passMsg').textContent="Passwords do not match."; return; } d.password=n; saveData(d); document.getElementById('passMsg').style.color='green'; document.getElementById('passMsg').textContent="Password changed!"; }
 function doLogout(){ localStorage.removeItem('thyplan_logged'); location.reload(); }
 if(location.hash==="#admin"){ showAdmin(); }
